@@ -17,7 +17,7 @@ import java.sql.SQLException;
 @AllArgsConstructor
 public class RetryService {
 
-    private DataSource dataSource;
+    private final DataSource dataSource;
 
     @Retryable(retryFor = SQLException.class, maxAttempts = 3, backoff = @Backoff(delay = 100))
     public void checkDBConnection() throws SqlNotAvailableException {

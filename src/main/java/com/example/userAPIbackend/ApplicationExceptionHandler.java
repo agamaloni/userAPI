@@ -17,7 +17,7 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Object> handleUserNotFoundException(UserNotFoundException ex) {
         ErrorResponse error = new ErrorResponse(Collections.singletonList(ex.getLocalizedMessage()));
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(error, HttpStatus.NOT_IMPLEMENTED);
     }
 
     @ExceptionHandler(SqlNotAvailableException.class)

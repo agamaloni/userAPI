@@ -5,10 +5,11 @@ import com.example.userAPIbackend.exception.SqlNotAvailableException;
 import com.example.userAPIbackend.exception.UserNotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
-    User getUser(Long id) throws UserNotFoundException, SqlNotAvailableException;
+    Optional<User> getUser(Long id) throws UserNotFoundException, SqlNotAvailableException;
     User addUser(User user) throws SqlNotAvailableException;
     void deleteUser(Long id) throws UserNotFoundException, SqlNotAvailableException;
     List<User> getAllUsers() throws SqlNotAvailableException;

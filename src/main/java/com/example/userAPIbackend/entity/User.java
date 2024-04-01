@@ -1,14 +1,14 @@
 package com.example.userAPIbackend.entity;
 
-import com.example.userAPIbackend.validator.ValidPassword;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Getter
 @Setter
-@NoArgsConstructor
-@RequiredArgsConstructor
 @Entity
 @Table(name = "USERS")
 public class User {
@@ -16,23 +16,25 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Long userId;
 
     @NonNull
+    @NotBlank(message = "Phone number cannot be blank")
     @Column(name = "firstName" ,nullable = false)
     private String firstName;
 
+
     @NonNull
+    @NotBlank(message = "Phone number cannot be blank")
     @Column(name = "lastName", nullable = false)
     private String lastName;
 
     @NonNull
-    @Email
+    @Email(message = "Email not valid")
     @Column(name = "email", nullable = false)
     private String email;
 
     @NonNull
-    @ValidPassword
     @Column(name = "password")
     private String password;
 

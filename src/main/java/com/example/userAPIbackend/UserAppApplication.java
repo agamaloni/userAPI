@@ -9,19 +9,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @AllArgsConstructor
 @SpringBootApplication
-public class UserAppApplication implements CommandLineRunner {
+	public class UserAppApplication implements CommandLineRunner {
+
+	UserService userService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(UserAppApplication.class, args);
 	}
 
-	UserService userService;
-
 	@Override
 	public void run(String... args) throws Exception {
 		User[] users = new User[]{
-				new User("Agam", "Aloni", "aa@gmaid.com", "#DRFfdfdf123GH%"),
-				new User("Dan", "Yom", "dd@gmaid.com", "#DRFG32fdsff3H%")
+				User.builder().userId(1L).firstName("Agam").lastName("Aloni").email("aa@hfhg.com").
+						password("Qq!10000").build(),
+		User.builder().userId(2L).firstName("dan").lastName("haschan").email("adda@hfhg.com").
+				password("Qq!10000").build()
 		};
 
 		for (User user : users) {
